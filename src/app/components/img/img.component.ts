@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ImgComponent {
   @Input() img: string = '';
   @Output() loaded = new EventEmitter<string>();
-  imageDefault = './assets/images/404.png';
+  imageDefault = './assets/images/default.jpg';
 
   constructor() {
     console.log('constructor');

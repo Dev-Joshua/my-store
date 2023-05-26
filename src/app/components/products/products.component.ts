@@ -12,25 +12,25 @@ export class ProductsComponent {
       id: '1',
       name: 'PS5',
       price: 800,
-      image: './assets/images/404.png',
+      image: './assets/images/play-sattion-5.jpg',
     },
     {
       id: '2',
       name: 'Bicicleta GW',
       price: 300,
-      image: './assets/images/404.png',
+      image: './assets/images/play-sattion-5.jpg',
     },
     {
       id: '3',
       name: 'Xbox Series',
       price: 700,
-      image: './assets/images/404.png',
+      image: './assets/images/play-sattion-5.jpg',
     },
     {
       id: '4',
       name: 'Rompecabezas 5000 fichas',
       price: 100,
-      image: './assets/images/404.png',
+      image: './assets/images/play-sattion-5.jpg',
     },
   ];
 }
