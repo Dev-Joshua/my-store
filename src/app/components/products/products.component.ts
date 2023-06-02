@@ -7,6 +7,8 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent {
+  myShoppingCart: Product[] = [];
+  total = 0;
   products: Product[] = [
     {
       id: '1',
@@ -33,4 +35,11 @@ export class ProductsComponent {
       image: './assets/images/play-sattion-5.jpg',
     },
   ];
+
+  onAddToShoppingCart(product: Product) {
+    this.myShoppingCart.push(product);
+    this.total = this.myShoppingCart.reduce((sum, item) => sum + item.price, 0);
+  }
 }
+
+// el metodo .reduce() de los arrays permite calcular y reducir todo a un solo valor.
