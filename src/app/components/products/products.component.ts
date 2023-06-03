@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../models/product.model';
 
 import { StoreService } from '../../services/store.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -12,38 +13,20 @@ import { StoreService } from '../../services/store.service';
 export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total = 0;
-  products: Product[] = [
-    {
-      id: '1',
-      name: 'PS5',
-      price: 800,
-      image: './assets/images/play-sattion-5.jpg',
-    },
-    {
-      id: '2',
-      name: 'Bicicleta GW',
-      price: 300,
-      image: './assets/images/play-sattion-5.jpg',
-    },
-    {
-      id: '3',
-      name: 'Xbox Series',
-      price: 700,
-      image: './assets/images/play-sattion-5.jpg',
-    },
-    {
-      id: '4',
-      name: 'Rompecabezas 5000 fichas',
-      price: 100,
-      image: './assets/images/play-sattion-5.jpg',
-    },
-  ];
+  products: Product[] = [];
 
-  constructor(private storeService: StoreService) {
+  constructor(
+    private storeService: StoreService,
+    private productsService: ProductsService
+  ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productsService.getAllProducts().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
