@@ -14,6 +14,8 @@ export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = [];
+  today = new Date();
+  date = new Date(2022, 0, 23);
 
   constructor(
     private storeService: StoreService,
@@ -25,6 +27,7 @@ export class ProductsComponent {
   ngOnInit(): void {
     this.productsService.getAllProducts().subscribe((data) => {
       console.log(data);
+      this.products = data;
     });
   }
 
