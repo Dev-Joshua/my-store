@@ -15,6 +15,17 @@ export class ProductsComponent {
   total = 0;
   products: Product[] = [];
   showProductDetail = false;
+  productChosen: Product = {
+    id: '',
+    price: 0,
+    images: [],
+    title: '',
+    category: {
+      id: '',
+      name: '',
+    },
+    description: '',
+  };
 
   constructor(
     private storeService: StoreService,
@@ -35,7 +46,17 @@ export class ProductsComponent {
     this.total = this.storeService.getTotal();
   }
 
+  // cada vez que le hagamos click al toggleProductDetail cambiamos el estado(true, false)
   toggleProductDetail() {
     this.showProductDetail = !this.showProductDetail;
+  }
+
+  // obtenemos el id y leemos el detalle del producto
+  onShowDetail(id: string) {
+    this.productsService.getProduct(id).subscribe((data) => {
+      console.log('product', data);
+      this.toggleProductDetail();
+      this.productChosen = data;
+    });
   }
 }

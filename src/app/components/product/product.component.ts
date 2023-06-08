@@ -20,10 +20,23 @@ export class ProductComponent {
     description: '',
   };
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   constructor() {}
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
   }
+
+  // Una vez se lee este evento se lo comunicamos al padre con @output
+  onShowDetail() {
+    this.showProduct.emit(this.product.id);
+  }
 }
+
+/*
+A partir de la emision de un evento(addedProduct, showProduct), el decorador @Output
+permite enviar un valor desde su componente hijo hacia el componente padre mediante el metodo emit()
+
+show product => Mostrar producto, esto  mediante su id.
+*/
