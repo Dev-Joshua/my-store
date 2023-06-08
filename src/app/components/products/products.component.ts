@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Product } from '../../models/product.model';
+import { Product, CreateProductDTO } from '../../models/product.model';
 
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
@@ -57,6 +57,21 @@ export class ProductsComponent {
       console.log('product', data);
       this.toggleProductDetail();
       this.productChosen = data;
+    });
+  }
+
+  //
+  createNewProduct() {
+    const product: CreateProductDTO = {
+      title: 'Play Station 4',
+      description: 'Consola Ps4 500Gb',
+      images: ['https://placeimg.com/640/480/any'],
+      price: 700,
+      categoryId: 2,
+    };
+    this.productsService.createProduct(product).subscribe((data) => {
+      console.log('created: ', data);
+      this.products.unshift(data);
     });
   }
 }
