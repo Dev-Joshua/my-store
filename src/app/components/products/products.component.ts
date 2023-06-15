@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Product, CreateProductDTO } from '../../models/product.model';
+import {
+  Product,
+  CreateProductDTO,
+  UpdateProductDTO,
+} from '../../models/product.model';
 
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
@@ -60,7 +64,7 @@ export class ProductsComponent {
     });
   }
 
-  //
+  // creo un producto mediante el servicio post
   createNewProduct() {
     const product: CreateProductDTO = {
       title: 'Play Station 4',
@@ -72,6 +76,34 @@ export class ProductsComponent {
     this.productsService.createProduct(product).subscribe((data) => {
       console.log('created: ', data);
       this.products.unshift(data);
+    });
+  }
+
+  // Editar producto
+  updateProduct() {
+    const changesProduct: UpdateProductDTO = {
+      title: 'Nuevo titulo',
+    };
+    const id = this.productChosen.id;
+    this.productsService.updateProduct(id, changesProduct).subscribe((data) => {
+      // console.log('updated', data);
+      const productIndex = this.products.findIndex(
+        (item) => item.id === this.productChosen.id
+      );
+      this.products[productIndex] = data;
+      this.productChosen = data;
+    });
+  }
+
+  // Eliminar producto de la interfaz grafica(no backend)
+  deleteProduct() {
+    const id = this.productChosen.id;
+    this.productsService.deleteProduct(id).subscribe(() => {
+      const productIndex = this.products.findIndex(
+        (item) => item.id === this.productChosen.id
+      );
+      this.products.splice(productIndex, 1);
+      this.showProductDetail = false;
     });
   }
 }
