@@ -32,6 +32,7 @@ export class ProductsComponent {
   };
   limit = 10;
   offset = 0;
+  statusDetail: 'Loading' | 'Success' | 'Error' | 'init' = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -60,11 +61,19 @@ export class ProductsComponent {
 
   // obtenemos el id y leemos el detalle del producto
   onShowDetail(id: string) {
-    this.productsService.getProduct(id).subscribe((data) => {
-      console.log('product', data);
-      this.toggleProductDetail();
-      this.productChosen = data;
-    });
+    this.statusDetail = 'Loading';
+    this.toggleProductDetail();
+    this.productsService.getProduct(id).subscribe(
+      (data) => {
+        console.log('product', data);
+        this.productChosen = data;
+        this.statusDetail = 'Success';
+      },
+      (errorMessage) => {
+        window.alert(errorMessage);
+        this.statusDetail = 'Error';
+      }
+    );
   }
 
   // creo un producto mediante el servicio post

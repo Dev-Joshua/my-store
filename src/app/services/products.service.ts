@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpStatusCode,
+} from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 import {
   Product,
   CreateProductDTO,
   UpdateProductDTO,
 } from './../models/product.model';
+import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +28,24 @@ export class ProductsService {
 
   // request para obtener un id en particular de cualquier producto
   getProduct(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+    return this.http.get<Product>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.Conflict) {
+          //500
+          return throwError('Algo esta fallando en el servidor');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          //404
+          return throwError('El producto no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          //401
+          return throwError('No estas autorizado');
+        }
+
+        return throwError('¡Ups algo salio mal!');
+      })
+    );
   }
 
   // request para la paginacion
