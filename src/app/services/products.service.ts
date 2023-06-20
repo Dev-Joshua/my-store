@@ -12,7 +12,6 @@ import {
   CreateProductDTO,
   UpdateProductDTO,
 } from './../models/product.model';
-import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
