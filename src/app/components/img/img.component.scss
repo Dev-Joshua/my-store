@@ -15,3 +15,9 @@ img {
     object-fit: contain;
   }
 }
+
+@media screen and (min-width: 20em) and (max-width: 40em) {
+  img {
+    width: 100%;
+  }
+}
