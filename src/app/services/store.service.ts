@@ -28,5 +28,7 @@ export class StoreService {
   }
 }
 
-//Este servicio se puede inyectar en otros componentes
-// el metodo .reduce() de los arrays permite calcular y reducir todo a un solo valor.
+// Este servicio se puede inyectar en otros componentes
+// El metodo .reduce() de los arrays permite calcular y reducir todo a un solo valor.
+// Con el observable myCart$ para escuchar activamente cambios de un componente subscrito a este observador.
+// Cuando se ejecuta addProoduct, aparte de hacer push a un producto del array myShoppingCart, utilizoo .next para transmitir el estado o valor de la lista actual (myShoppingCart)

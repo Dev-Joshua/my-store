@@ -1,4 +1,40 @@
-p,
-h2 {
-  margin: 0;
+div {
+  margin-left: 5px;
+}
+.container-details {
+  display: flex;
+  flex-direction: column;
+  p,
+  h2 {
+    margin: 0;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  p {
+    font-size: 14px;
+    color: rgb(75, 75, 75);
+  }
+}
+.container-buttons {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  margin-bottom: 10px;
+  button:nth-child(1) {
+    width: 50%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-family: "Quicksand", sans-serif;
+  }
+  button:nth-child(2) {
+    border: none;
+    background: none;
+  }
+  button:nth-child(2) img {
+    width: 35px;
+  }
 }

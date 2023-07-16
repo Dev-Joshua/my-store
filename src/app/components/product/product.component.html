@@ -1,5 +1,11 @@
 <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
-<h2>{{ product.price | currency : "COP" }}</h2>
-<p>{{ product.title }}</p>
-<button (click)="onShowDetail()">Details</button>
-<button (click)="onAddToCart()">Add cart</button>
+<div class="container-details">
+  <h2>{{ product.price | currency : "COP " }}</h2>
+  <p>{{ product.title }}</p>
+</div>
+<div class="container-buttons">
+  <button (click)="onShowDetail()">Details</button>
+  <button (click)="onAddToCart()">
+    <img src="../../../assets/svg/bt_add_to_cart.svg" alt="" />
+  </button>
+</div>

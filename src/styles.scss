@@ -10,9 +10,18 @@
 }
 
 .products--grid {
+  app-product {
+    display: flex;
+    box-shadow: 10px 5px 5px #c5c3c3;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
   app-img {
     img {
-      border-radius: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       max-height: 230px;
     }
   }
