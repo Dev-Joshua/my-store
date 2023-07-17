@@ -38,5 +38,5 @@ export class ProductComponent {
 A partir de la emision de un evento(addedProduct, showProduct), el decorador @Output
 permite enviar un valor desde su componente hijo hacia el componente padre mediante el metodo emit()
 
-show product => Mostrar producto, esto  mediante su id.
+showProduct => Mostrar producto, esto  mediante su id.
 */

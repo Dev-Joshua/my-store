@@ -17,7 +17,7 @@ import {
   providedIn: 'root',
 })
 export class ProductsService {
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/products';
+  private apiUrl = ' https://api.escuelajs.co/api/v1/products';
 
   constructor(private http: HttpClient) {}
 
