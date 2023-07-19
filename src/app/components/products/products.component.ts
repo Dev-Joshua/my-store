@@ -49,6 +49,7 @@ export class ProductsComponent {
     });
   }
 
+  // agregar producto al carrito
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
@@ -119,6 +120,7 @@ export class ProductsComponent {
     });
   }
 
+  // Cargar mas productos
   loadMore() {
     this.productsService
       .getProductsByPage(this.limit, this.offset)
@@ -128,3 +130,5 @@ export class ProductsComponent {
       });
   }
 }
+
+// -> productChosen es una propiedad de tipo Product que contendra las imagenes del producto seleccionado en un array que toca recorrer

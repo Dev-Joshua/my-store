@@ -28,7 +28,17 @@ export class StoreService {
   }
 }
 
-// Este servicio se puede inyectar en otros componentes
-// El metodo .reduce() de los arrays permite calcular y reducir todo a un solo valor.
-// Con el observable myCart$ para escuchar activamente cambios de un componente subscrito a este observador.
-// Cuando se ejecuta addProoduct, aparte de hacer push a un producto del array myShoppingCart, utilizoo .next para transmitir el estado o valor de la lista actual (myShoppingCart)
+/*
+  En este servicio (store) delegamos toda la manipulacion del shopping cart.
+
+  La libreria 'rxjs' implementa todo el patron de observables dentro de Angular. En este caso
+  utilizamos el BehaviorSubject para crear un observable, que permita crear este patron y asi
+  otros componentes se puedan subscribir apenas reciba un cambio.
+
+  Con el observable myCart$ escucho activamente los cambios de un componente subscrito a este observador.
+  Cuando se ejecuta addProoduct, aparte de hacer push a un producto en el array myShoppingCart,
+  utilizo .next para transmitir el estado de la lista actual (myShoppingCart).
+
+  El metodo .reduce() de los arrays permite calcular y reducir todo a un solo valor para asi calcular el total del shopping cart.
+
+*/

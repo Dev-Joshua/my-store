@@ -20,7 +20,7 @@ export class NavComponent {
     private authService: AuthService
   ) {}
 
-  // Me subscribo a myCart$ para tener la lista de products actualizada en el counter
+  // Me subscribo a myCart$ para tener la lista de productos (myShoppingCart) actualizada en el counter.
   ngOnInit(): void {
     this.storeServices.myCart$.subscribe((products) => {
       this.counter = products.length;
@@ -47,3 +47,7 @@ export class NavComponent {
     });
   }
 }
+
+/*
+  Este componente nav es el que se va a subscribir y va a escuchar los cambios de (myShoppingCart).
+*/

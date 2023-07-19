@@ -41,7 +41,6 @@ export class ProductsService {
           //401
           return throwError('No estas autorizado');
         }
-
         return throwError('¡Ups algo salio mal!');
       })
     );
@@ -64,7 +63,7 @@ export class ProductsService {
     return this.http.put<Product>(`${this.apiUrl}/${id}`, dto);
   }
 
-  // Esta query devuelve un booleano(si elimino o no el producto)
+  // este request devuelve un booleano(si elimino o no el producto)
   deleteProduct(id: string) {
     return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
   }
@@ -72,6 +71,6 @@ export class ProductsService {
 
 /*
 La data que venga de createProductDTO sera la que enviaremos en el cuerpo de la peticion para ser enviado a la API
-El DTO es el data transfer object, que es lo que enviaamos a nuestra api.
+El DTO es el data transfer object, que es lo que enviamos a nuestra api.
 Le enviamos a la API un dto pero cuando la api responda nos va a enviar un producto(algo que si tiene id y la category anidada)
 */

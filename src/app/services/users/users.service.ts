@@ -7,7 +7,7 @@ import { CreateUserDTO, User } from '../../models/user.model';
   providedIn: 'root',
 })
 export class UsersService {
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/users';
+  private apiUrl = 'https://api.escuelajs.co/api/v1/users';
 
   constructor(private http: HttpClient) {}
 
