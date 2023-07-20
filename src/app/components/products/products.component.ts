@@ -42,7 +42,7 @@ export class ProductsComponent {
   }
 
   ngOnInit(): void {
-    this.productsService.getProductsByPage(10, 0).subscribe((data) => {
+    this.productsService.getAllProducts(10, 0).subscribe((data) => {
       // console.log(data);
       this.products = data;
       this.offset += this.limit;

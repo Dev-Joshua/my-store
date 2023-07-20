@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpErrorResponse,
+  HttpParams,
   HttpStatusCode,
 } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import {
@@ -21,8 +22,23 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  getAllProducts() {
-    return this.http.get<Product[]>(this.apiUrl);
+  getAllProducts(limit?: number, offset?: number) {
+    let params = new HttpParams();
+    if (limit && offset) {
+      params = params.set('limit', limit);
+      params = params.set('offset', limit);
+    }
+    return this.http.get<Product[]>(this.apiUrl, { params }).pipe(
+      retry(3),
+      map((products) =>
+        products.map((item) => {
+          return {
+            ...item,
+            taxes: 0.19 * item.price,
+          };
+        })
+      )
+    );
   }
 
   // request para obtener un id en particular de cualquier producto
@@ -72,5 +88,8 @@ export class ProductsService {
 /*
 La data que venga de createProductDTO sera la que enviaremos en el cuerpo de la peticion para ser enviado a la API
 El DTO es el data transfer object, que es lo que enviamos a nuestra api.
-Le enviamos a la API un dto pero cuando la api responda nos va a enviar un producto(algo que si tiene id y la category anidada)
+Le enviamos a la API un dto pero cuando la api responda nos va a enviar un producto(algo que si tiene id y la category anidada).
+
+El map es para transformar los valores que lleguen en el observable. zTaxes viene siendo los impuestos, agregamos esa informacion asi
+no venga desde el back y la renderizamos en el componente product.
 */

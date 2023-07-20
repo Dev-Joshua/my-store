@@ -8,7 +8,7 @@ import { User } from 'src/app/models/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/auth';
+  private apiUrl = 'https://api.escuelajs.co/api/v1/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -26,3 +26,8 @@ export class AuthService {
     });
   }
 }
+
+/*
+  Luego de que el usuario se registre poodemos utilizar el ttoken en profile como parametro para solicitar esta infoormacion.
+  Le especifico que me retorne la respuesta sea de tipo User y en los headers envio la autorizacio de tipo Bearer
+*/

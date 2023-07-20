@@ -9,7 +9,6 @@ import { UsersService } from './services/users/users.service';
 })
 export class AppComponent {
   imgParent = '';
-  token = '';
 
   constructor(private usersServices: UsersService) {}
 
@@ -21,8 +20,10 @@ export class AppComponent {
     this.usersServices
       .create({
         name: 'Andres',
-        email: 'andes@mail.com',
-        password: '222',
+        email: 'Jdaniel@mail.com',
+        password: '12345',
+        avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
+        role: 'admin',
       })
       .subscribe((rta) => {
         console.log(rta);

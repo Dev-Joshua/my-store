@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/models/user.model';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -33,21 +34,28 @@ export class NavComponent {
   }
 
   login() {
-    this.authService.login('andes@mail.com', '222').subscribe((rta) => {
-      console.log(rta.access_token);
-      this.token = rta.access_token;
-      this.getProfile();
-    });
+    this.authService
+      .login('Jdaniel@mail.com', '12345')
+      .pipe(
+        switchMap((token) => {
+          this.token = token.access_token;
+          return this.authService.profile(token.access_token);
+        })
+      )
+      .subscribe((user) => {
+        this.profile = user;
+      });
   }
 
-  getProfile() {
-    this.authService.profile(this.token).subscribe((user) => {
-      console.log(user);
-      this.profile = user;
-    });
-  }
+  // getProfile() {
+  //   this.authService.profile(this.token).subscribe((user) => {
+  //     console.log(user);
+  //     this.profile = user;
+  //   });
+  // }
 }
 
 /*
   Este componente nav es el que se va a subscribir y va a escuchar los cambios de (myShoppingCart).
+  Uso el pipe switchMap para aceptar un valor de entrada y transformarlo. Asi reflejamos el email del user cuando de click en Login.
 */

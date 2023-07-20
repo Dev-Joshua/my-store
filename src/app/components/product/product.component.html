@@ -2,6 +2,7 @@
 <div class="container-details">
   <h2>{{ product.price | currency : "COP " }}</h2>
   <p>{{ product.title }}</p>
+  <p>{{ product.taxes ?? "" | currency : "COP " }}</p>
 </div>
 <div class="container-buttons">
   <button (click)="onShowDetail()">Details</button>
