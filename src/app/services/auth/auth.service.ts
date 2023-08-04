@@ -4,11 +4,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Auth } from 'src/app/models/auth.model';
 import { User } from 'src/app/models/user.model';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://api.escuelajs.co/api/v1/auth';
+  private apiUrl = `${environment.API_URL}/auth`;
 
   constructor(private http: HttpClient) {}
 

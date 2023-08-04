@@ -14,11 +14,13 @@ import {
   UpdateProductDTO,
 } from './../models/product.model';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private apiUrl = ' https://api.escuelajs.co/api/v1/products';
+  private apiUrl = `${environment.API_URL}/products`;
 
   constructor(private http: HttpClient) {}
 

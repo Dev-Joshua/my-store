@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 
 import { CreateUserDTO, User } from '../../models/user.model';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private apiUrl = 'https://api.escuelajs.co/api/v1/users';
+  private apiUrl = `${environment.API_URL}/users`;
 
   constructor(private http: HttpClient) {}
 
