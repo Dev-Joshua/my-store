@@ -3,8 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Auth } from 'src/app/models/auth.model';
 import { User } from 'src/app/models/user.model';
+import { TokenService } from '../token/token.service';
 
 import { environment } from 'src/environments/environment';
+import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,20 +14,24 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   private apiUrl = `${environment.API_URL}/auth`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   login(email: string, password: string) {
-    return this.http.post<Auth>(`${this.apiUrl}/login`, { email, password });
+    return this.http
+      .post<Auth>(`${this.apiUrl}/login`, { email, password })
+      .pipe(
+        tap((response) => this.tokenService.saveToken(response.access_token))
+      );
   }
 
-  profile(token: string) {
+  getProfile() {
     // const headers = new HttpHeaders()
     // headers.set('Authorization', `Bearer ${token}`)
-    return this.http.get<User>(`${this.apiUrl}/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return this.http.get<User>(`${this.apiUrl}/profile`);
+  }
+
+  loginAndGet(email: string, password: string) {
+    return this.login(email, password).pipe(switchMap(() => this.getProfile()));
   }
 }
 

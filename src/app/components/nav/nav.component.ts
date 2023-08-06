@@ -13,7 +13,6 @@ import { switchMap } from 'rxjs';
 export class NavComponent {
   activeMenu = false;
   counter = 0;
-  token = '';
   profile: User | null = null;
 
   constructor(
@@ -35,24 +34,11 @@ export class NavComponent {
 
   login() {
     this.authService
-      .login('Jdaniel@mail.com', '12345')
-      .pipe(
-        switchMap((token) => {
-          this.token = token.access_token;
-          return this.authService.profile(token.access_token);
-        })
-      )
+      .loginAndGet('Jdaniel@mail.com', '12345')
       .subscribe((user) => {
         this.profile = user;
       });
   }
-
-  // getProfile() {
-  //   this.authService.profile(this.token).subscribe((user) => {
-  //     console.log(user);
-  //     this.profile = user;
-  //   });
-  // }
 }
 
 /*
