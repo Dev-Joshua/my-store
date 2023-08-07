@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import {
   Product,
@@ -17,7 +17,8 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total = 0;
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  @Output() onLoadMore: EventEmitter<string> = new EventEmitter<string>();
   showProductDetail = false;
   productChosen: Product = {
     id: '',
@@ -30,8 +31,6 @@ export class ProductsComponent {
     },
     description: '',
   };
-  limit = 10;
-  offset = 0;
   statusDetail: 'Loading' | 'Success' | 'Error' | 'init' = 'init';
 
   constructor(
@@ -39,14 +38,6 @@ export class ProductsComponent {
     private productsService: ProductsService
   ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
-  }
-
-  ngOnInit(): void {
-    this.productsService.getAllProducts(10, 0).subscribe((data) => {
-      // console.log(data);
-      this.products = data;
-      this.offset += this.limit;
-    });
   }
 
   // agregar producto al carrito
@@ -122,12 +113,7 @@ export class ProductsComponent {
 
   // Cargar mas productos
   loadMore() {
-    this.productsService
-      .getProductsByPage(this.limit, this.offset)
-      .subscribe((data) => {
-        this.products = this.products.concat(data);
-        this.offset += this.limit;
-      });
+    this.onLoadMore.emit();
   }
 }
 
