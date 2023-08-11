@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ProductsService {
-  private apiUrl = `${environment.API_URL}/products`;
+  private apiUrl = `${environment.API_URL}`;
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +30,7 @@ export class ProductsService {
       params = params.set('limit', limit);
       params = params.set('offset', limit);
     }
-    return this.http.get<Product[]>(this.apiUrl, { params }).pipe(
+    return this.http.get<Product[]>(`${this.apiUrl}/products`, { params }).pipe(
       retry(3),
       map((products) =>
         products.map((item) => {
@@ -45,7 +45,7 @@ export class ProductsService {
 
   // request para obtener un id en particular de cualquier producto
   getProduct(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === HttpStatusCode.Conflict) {
           //500
@@ -64,26 +64,39 @@ export class ProductsService {
     );
   }
 
-  // request para la paginacion
-  getProductsByPage(limit: number, offset: number) {
-    return this.http.get<Product[]>(`${this.apiUrl}`, {
-      params: { limit, offset },
-    });
+  getByCategory(categoryId: string, limit?: number, offset?: number) {
+    let params = new HttpParams();
+    if (limit && offset) {
+      params = params.set('limit', limit);
+      params = params.set('offset', limit);
+    }
+    return this.http.get<Product[]>(
+      `${this.apiUrl}/categories/${categoryId}/products`,
+      {
+        params,
+      }
+    );
   }
+  // request para la paginacion
+  // getProductsByPage(limit: number, offset: number) {
+  //   return this.http.get<Product[]>(`${this.apiUrl}`, {
+  //     params: { limit, offset },
+  //   });
+  // }
 
   // request para crear un producto, enviandole la interfaz de tipo Product
   createProduct(dto: CreateProductDTO) {
-    return this.http.post<Product>(this.apiUrl, dto);
+    return this.http.post<Product>(`${this.apiUrl}/products`, dto);
   }
 
   // request para actualizar un producto
   updateProduct(id: string, dto: UpdateProductDTO) {
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, dto);
+    return this.http.put<Product>(`${this.apiUrl}/products/${id}`, dto);
   }
 
   // este request devuelve un booleano(si elimino o no el producto)
   deleteProduct(id: string) {
-    return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
+    return this.http.delete<boolean>(`${this.apiUrl}/products/${id}`);
   }
 }
 

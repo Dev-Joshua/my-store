@@ -1,3 +1,7 @@
 <app-products [products]="products" (onLoadMore)="loadMore()"></app-products>
 
-<!-- app-products es el encargado de renderizar la lista de productos  -->
+<!--
+  app-products es el encargado de renderizar la lista de productos.
+  se reacciona al evento de onLoadMore del hijo ejecutando la funcion loadMore().
+  comunicamos de vuelta con el input.
+-->

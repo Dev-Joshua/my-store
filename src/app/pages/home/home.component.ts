@@ -26,10 +26,15 @@ export class HomeComponent {
 
   loadMore(): void {
     this.productsService
-      .getProductsByPage(this.limit, this.offset)
+      .getAllProducts(this.limit, this.offset)
       .subscribe((data) => {
         this.products = this.products.concat(data);
         this.offset += this.limit;
       });
   }
 }
+
+/*
+  Aqui va la logica para cargar mas informacion/productos.
+  Al array de products[] le concatenamos la suguiente pagina que se cargara
+*/

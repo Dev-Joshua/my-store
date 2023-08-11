@@ -15,10 +15,11 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent {
-  myShoppingCart: Product[] = [];
-  total = 0;
   @Input() products: Product[] = [];
   @Output() onLoadMore: EventEmitter<string> = new EventEmitter<string>();
+
+  myShoppingCart: Product[] = [];
+  total = 0;
   showProductDetail = false;
   productChosen: Product = {
     id: '',
@@ -118,3 +119,4 @@ export class ProductsComponent {
 }
 
 // -> productChosen es una propiedad de tipo Product que contendra las imagenes del producto seleccionado en un array que toca recorrer
+// -> Con el Output se emite la comunicacion con el padre asi le inddica cuando cargar la informacion
