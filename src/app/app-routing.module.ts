@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'category/:id',
     component: CategoryComponent,
+  },
+  {
+    path: 'products/:id',
+    component: ProductDetailComponent,
   },
   {
     path: 'notFound',
@@ -48,6 +53,10 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
   },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
@@ -55,3 +64,8 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+/*
+  Le indico al routing que muestre una catagoria y que me especifique cual es el id de esa categoria
+  -->ruta de categorias: category/:id
+*/

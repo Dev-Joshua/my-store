@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/models/user.model';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { Category } from 'src/app/models/category.model';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -14,10 +16,12 @@ export class NavComponent {
   activeMenu = false;
   counter = 0;
   profile: User | null = null;
+  categories: Category[] = [];
 
   constructor(
     private storeServices: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private categoriesService: CategoriesService
   ) {}
 
   // Me subscribo a myCart$ para tener la lista de productos (myShoppingCart) actualizada en el counter.
@@ -25,6 +29,7 @@ export class NavComponent {
     this.storeServices.myCart$.subscribe((products) => {
       this.counter = products.length;
     });
+    this.getAllCategories();
   }
 
   // En el estado que este lo hacemos cambiar a lo contrario
@@ -38,6 +43,12 @@ export class NavComponent {
       .subscribe((user) => {
         this.profile = user;
       });
+  }
+
+  getAllCategories() {
+    this.categoriesService.getAll().subscribe((data) => {
+      this.categories = data;
+    });
   }
 }
 

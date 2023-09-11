@@ -17,9 +17,10 @@
   <div class="slide-menu" [class.active]="activeMenu">
     <button (click)="toggleMenu()">Close</button>
     <ul>
-      <li><a href="">All</a></li>
-      <li><a href="">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
+      <li><a routerLink="home">All</a></li>
+      <li *ngFor="let item of categories">
+        <a [routerLink]="['/category', item.id]">{{ item.name }}</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -27,13 +28,16 @@
 <div class="hide-mobile">
   <div>
     <nav>
-      <a class="logo" href="">
+      <a class="logo" routerLink="home">
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo" />
       </a>
       <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
+        <li><a routerLinkActive="active" routerLink="home">All</a></li>
+        <li *ngFor="let item of categories">
+          <a routerLinkActive="active" [routerLink]="['/category', item.id]">{{
+            item.name
+          }}</a>
+        </li>
       </ul>
     </nav>
     <div class="info">
@@ -57,4 +61,12 @@
   Con el counter mostramos cuantos elementos hay en el shopping cart de forma reactiva.
   En el div de acount utilizo un boton para hacer login, Si NO hay profile me muestra el boton Login pero si ya existe uno
   deberiamos tener el profile.email
+
+  Se hace un render dinamico del array de categorias desde el nav usando property binding con [routerLink] y especificamos
+  en forma de [] como es la url[/category, item.id].
+  se imprime el nombre de cada categoria item.name.
+
+  Se crea un estado active en scss y le decimos que cuanto este activo con routerLinkActive
+  (coincida con la ruta de categoria) se muestre ese estilo.
+
 -->

@@ -11,7 +11,7 @@ export class ImgComponent {
   imageDefault = './assets/images/default.jpg';
 
   constructor() {
-    console.log('constructor');
+    // console.log('constructor');
   }
 
   ngOnInit(): void {}
@@ -21,7 +21,7 @@ export class ImgComponent {
   }
 
   imgLoaded() {
-    console.log('log hijo');
+    // console.log('log hijo');
     this.loaded.emit(this.img);
   }
 }

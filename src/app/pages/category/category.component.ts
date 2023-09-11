@@ -16,11 +16,13 @@ export class CategoryComponent {
   limit = 10;
   offset = 0;
 
+  // Inyeccion de dependencias
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService
   ) {}
 
+  // Genero el request
   ngOnInit(): void {
     this.route.paramMap
       .pipe(
@@ -54,5 +56,6 @@ export class CategoryComponent {
 }
 
 /*
-  Utilizo switchMap para evitar el doble subscribe
+  Este componente solicita la lista de productos a productsService, especificando en el request que quiere obtener la categoria de los prodcutos
+  Utilizo switchMap para evitar el doble subscribe.
 */

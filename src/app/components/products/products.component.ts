@@ -21,17 +21,7 @@ export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total = 0;
   showProductDetail = false;
-  productChosen: Product = {
-    id: '',
-    price: 0,
-    images: [],
-    title: '',
-    category: {
-      id: '',
-      name: '',
-    },
-    description: '',
-  };
+  productChosen: Product | null = null;
   statusDetail: 'Loading' | 'Success' | 'Error' | 'init' = 'init';
 
   constructor(
@@ -86,30 +76,36 @@ export class ProductsComponent {
 
   // Editar producto
   updateProduct() {
-    const changesProduct: UpdateProductDTO = {
-      title: 'Nuevo titulo',
-    };
-    const id = this.productChosen.id;
-    this.productsService.updateProduct(id, changesProduct).subscribe((data) => {
-      // console.log('updated', data);
-      const productIndex = this.products.findIndex(
-        (item) => item.id === this.productChosen.id
-      );
-      this.products[productIndex] = data;
-      this.productChosen = data;
-    });
+    if (this.productChosen) {
+      const changesProduct: UpdateProductDTO = {
+        title: 'Nuevo titulo',
+      };
+      const id = this.productChosen?.id;
+      this.productsService
+        .updateProduct(id, changesProduct)
+        .subscribe((data) => {
+          // console.log('updated', data);
+          const productIndex = this.products.findIndex(
+            (item) => item.id === this.productChosen?.id
+          );
+          this.products[productIndex] = data;
+          this.productChosen = data;
+        });
+    }
   }
 
   // Eliminar producto de la interfaz grafica(no backend)
   deleteProduct() {
-    const id = this.productChosen.id;
-    this.productsService.deleteProduct(id).subscribe(() => {
-      const productIndex = this.products.findIndex(
-        (item) => item.id === this.productChosen.id
-      );
-      this.products.splice(productIndex, 1);
-      this.showProductDetail = false;
-    });
+    if (this.productChosen) {
+      const id = this.productChosen?.id;
+      this.productsService.deleteProduct(id).subscribe(() => {
+        const productIndex = this.products.findIndex(
+          (item) => item.id === this.productChosen?.id
+        );
+        this.products.splice(productIndex, 1);
+        this.showProductDetail = false;
+      });
+    }
   }
 
   // Cargar mas productos
@@ -120,3 +116,4 @@ export class ProductsComponent {
 
 // -> productChosen es una propiedad de tipo Product que contendra las imagenes del producto seleccionado en un array que toca recorrer
 // -> Con el Output se emite la comunicacion con el padre asi le inddica cuando cargar la informacion
+// -> Las pages se encargaran de hacer el render o rquest de cada componente
