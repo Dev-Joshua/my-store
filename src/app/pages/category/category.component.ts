@@ -15,6 +15,7 @@ export class CategoryComponent {
   products: Product[] = [];
   limit = 10;
   offset = 0;
+  productId: string | null = null;
 
   // Inyeccion de dependencias
   constructor(
@@ -41,6 +42,10 @@ export class CategoryComponent {
       .subscribe((data) => {
         this.products = data;
       });
+    this.route.queryParamMap.subscribe((params) => {
+      this.productId = params.get('product');
+      console.log(this.productId);
+    });
   }
 
   loadMore() {

@@ -16,6 +16,13 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsComponent {
   @Input() products: Product[] = [];
+  // @Input() productId: string | null = null;
+  @Input()
+  set productId(id: string | null) {
+    if (id) {
+      this.onShowDetail(id);
+    }
+  }
   @Output() onLoadMore: EventEmitter<string> = new EventEmitter<string>();
 
   myShoppingCart: Product[] = [];
@@ -45,7 +52,9 @@ export class ProductsComponent {
   // obtenemos el id y leemos el detalle del producto
   onShowDetail(id: string) {
     this.statusDetail = 'Loading';
-    this.toggleProductDetail();
+    if (!this.showProductDetail) {
+      this.showProductDetail = true;
+    }
     this.productsService.getProduct(id).subscribe(
       (data) => {
         console.log('product', data);
@@ -117,3 +126,4 @@ export class ProductsComponent {
 // -> productChosen es una propiedad de tipo Product que contendra las imagenes del producto seleccionado en un array que toca recorrer
 // -> Con el Output se emite la comunicacion con el padre asi le inddica cuando cargar la informacion
 // -> Las pages se encargaran de hacer el render o rquest de cada componente
+// -> El Input productId cada vez que cambie llamara a onShowDetail y mostraria el modal.

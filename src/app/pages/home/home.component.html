@@ -1,4 +1,8 @@
-<app-products [products]="products" (onLoadMore)="loadMore()"></app-products>
+<app-products
+  [productId]="productId"
+  [products]="products"
+  (onLoadMore)="loadMore()"
+></app-products>
 
 <!--
   app-products es el encargado de renderizar la lista de productos.
