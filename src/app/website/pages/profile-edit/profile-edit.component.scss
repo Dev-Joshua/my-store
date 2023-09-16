@@ -1,8 +1,13 @@
-.form-login {
+.form-profile {
   height: 100vh;
   width: 100%;
   display: grid;
   place-content: center;
+  h2 {
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -10,10 +15,11 @@
     width: 340px;
     background-color: #ffffff;
     gap: 10px;
+
     label {
-      font-size: 14px;
       font-weight: 700;
       margin-top: 20px;
+      font-size: 14px;
     }
     input {
       width: 339px;
@@ -23,13 +29,7 @@
       border: none;
       font-size: 16px;
     }
-    p {
-      font-size: 14px;
-      text-align: center;
-      color: #acd9b2;
-      margin-top: 20px;
-      cursor: pointer;
-    }
+
     button {
       display: flex;
       width: 339px;
@@ -45,18 +45,8 @@
       font-weight: 700;
       cursor: pointer;
     }
-    .log-in:hover {
+    button:hover {
       background-color: #4a704f;
-    }
-    .sign-up {
-      background-color: #ffffff;
-      color: #acd9b2;
-      border: 1px solid #acd9b2;
-      margin-top: 60px;
-    }
-    .sign-up:hover {
-      background-color: #4a704f;
-      color: #ffffff;
     }
   }
 }

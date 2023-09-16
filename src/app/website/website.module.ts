@@ -17,6 +17,7 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 @NgModule({
   declarations: [
     ProductComponent,
@@ -32,6 +33,7 @@ import { LayoutComponent } from './components/layout/layout.component';
     ProfileComponent,
     ProductDetailComponent,
     LayoutComponent,
+    ProfileEditComponent,
   ],
   imports: [CommonModule, WebsiteRoutingModule, SwiperModule],
 })
