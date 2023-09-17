@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SwiperModule } from 'swiper/angular';
 
 import { WebsiteRoutingModule } from './website-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
-import { ProductComponent } from './components/product/product.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryComponent } from './pages/category/category.component';
@@ -20,9 +18,6 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 @NgModule({
   declarations: [
-    ProductComponent,
-    ImgComponent,
-    ProductsComponent,
     NavComponent,
     HomeComponent,
     CategoryComponent,
@@ -35,6 +30,6 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
     LayoutComponent,
     ProfileEditComponent,
   ],
-  imports: [CommonModule, WebsiteRoutingModule, SwiperModule],
+  imports: [CommonModule, WebsiteRoutingModule, SwiperModule, SharedModule],
 })
 export class WebsiteModule {}

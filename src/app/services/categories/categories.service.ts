@@ -14,11 +14,15 @@ export class CategoriesService {
 
   getAll(limit?: number, offset?: number) {
     let params = new HttpParams();
-    if (limit && offset) {
+    if (limit && offset != null) {
       params = params.set('limit', limit);
       params = params.set('offset', limit);
     }
     return this.http.get<Category[]>(this.apiUrl, { params });
+  }
+
+  deleteCategoryId(id: number) {
+    return this.http.delete<boolean>(`${this.apiUrl}/categories/${id}`);
   }
 }
 

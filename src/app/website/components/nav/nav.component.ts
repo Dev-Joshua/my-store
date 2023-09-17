@@ -17,6 +17,8 @@ export class NavComponent {
   counter = 0;
   profile: User | null = null;
   categories: Category[] = [];
+  limit = 4;
+  offset = 0;
 
   constructor(
     private storeServices: StoreService,
@@ -46,7 +48,7 @@ export class NavComponent {
   }
 
   getAllCategories() {
-    this.categoriesService.getAll().subscribe((data) => {
+    this.categoriesService.getAll(4, 0).subscribe((data) => {
       this.categories = data;
     });
   }
