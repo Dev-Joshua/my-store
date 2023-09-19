@@ -4,6 +4,7 @@
   flex-direction: column;
   margin-top: 20px;
   background-color: #fff;
+  z-index: 0;
 }
 
 .product-detail {
@@ -29,24 +30,27 @@
     background-color: #fff;
     border: none;
     position: relative;
-    top: 60px;
+    top: 15px;
     left: 10px;
     z-index: 9999;
     font-weight: bold;
     font-size: 18px;
     cursor: pointer;
   }
+  .swiper-container {
+    top: -40px;
+  }
   .swiper-slide img {
     z-index: 0;
   }
   .details {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     h2 {
       font-weight: bold;
       font-size: 18px;
-      margin-top: 30px;
     }
     h1 {
       font-size: 18px;
@@ -56,6 +60,18 @@
       font-size: 16px;
       color: #797979;
       margin-top: 20px;
+      font-weight: 400;
+    }
+    button {
+      margin-top: 20px;
+      width: 400px;
+      height: 59px;
+      flex-shrink: 0;
+      color: #fff;
+      background-color: #acd9b2;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
     }
   }
 }
@@ -74,6 +90,35 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 15px;
+  }
+
+  .product-detail {
+    left: 70%;
+    .details {
+      margin-top: -30px;
+      p {
+        width: 316px;
+        line-height: 1.1;
+      }
+      button {
+        width: 316px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 85em) {
+  .product-detail {
+    .details {
+      padding: 40px;
+      p {
+        width: 400px;
+        line-height: 1.1;
+      }
+      button {
+        width: 400px;
+      }
+    }
   }
 }
 

@@ -9,11 +9,10 @@
   ></app-product>
   <button (click)="loadMore()">Load More</button>
   <div class="product-detail" [class.active]="showProductDetail">
-    {{ statusDetail }}
+    <!-- {{ statusDetail }} -->
     <div *ngIf="productChosen">
       <button (click)="toggleProductDetail()">X</button>
-
-      <swiper [slidesPerView]="1">
+      <swiper class="swiper-container" [slidesPerView]="1">
         <ng-template swiperSlide *ngFor="let img of productChosen.images">
           <img [src]="img" [alt]="productChosen.title" />
         </ng-template>
@@ -22,10 +21,11 @@
         <h2>{{ productChosen.price | currency }}</h2>
         <h1>{{ productChosen.title }}</h1>
         <p>{{ productChosen.description }}</p>
+        <button>Add to cart</button>
       </div>
 
-      <button (click)="updateProduct()">Editar</button>
-      <button (click)="deleteProduct()">Eliminar</button>
+      <!-- <button (click)="updateProduct()">Editar</button>
+      <button (click)="deleteProduct()">Eliminar</button> -->
     </div>
   </div>
 </div>

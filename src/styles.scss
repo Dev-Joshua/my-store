@@ -26,13 +26,13 @@
   }
 }
 .product-detail {
-  padding: 0.5em;
   .swiper-slide {
-    height: 500px;
     display: flex;
     align-items: center;
     img {
       width: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
   }
 }
