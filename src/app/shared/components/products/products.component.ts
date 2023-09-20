@@ -16,6 +16,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductsComponent {
   @Input() products: Product[] = [];
+  @Input() productsRandom: Product[] = [];
   // @Input() productId: string | null = null;
   @Input()
   set productId(id: string | null) {
@@ -23,6 +24,7 @@ export class ProductsComponent {
       this.onShowDetail(id);
     }
   }
+  @Input() showBanner = true;
   @Output() onLoadMore: EventEmitter<string> = new EventEmitter<string>();
 
   myShoppingCart: Product[] = [];

@@ -1,0 +1,19 @@
+<div class="banner" *ngIf="products.length > 0; else loaderContainer">
+  <swiper [slidesPerView]="1" [autoplay]="{ delay: 1000 }">
+    <ng-template swiperSlide *ngFor="let product of products">
+      <section class="banner--slider">
+        <div class="banner--slider__description">
+          <h2>{{ product.title }}</h2>
+          <p>{{ product.description }}</p>
+          <span (click)="onShowProductDetail(product.id)">View details</span>
+        </div>
+        <app-img [img]="product.images[0]"></app-img>
+      </section>
+    </ng-template>
+  </swiper>
+</div>
+<ng-template #loaderContainer>
+  <div>
+    <app-loader></app-loader>
+  </div>
+</ng-template>

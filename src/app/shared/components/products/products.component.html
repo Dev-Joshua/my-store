@@ -1,5 +1,10 @@
 <!-- <button (click)="createNewProduct()">create</button>
 <button (click)="onShowDetail('1234213')">detalle not found</button> -->
+<app-banner
+  *ngIf="showBanner"
+  [products]="productsRandom"
+  (showProductDetail)="onShowDetail($event)"
+></app-banner>
 <div class="products--grid">
   <app-product
     [product]="product"

@@ -20,6 +20,7 @@
   transition: all ease-out 0.5s;
   transform: translateX(100%);
   &.active {
+    z-index: 9999;
     transform: translateX(0);
   }
   div button:nth-child(1) {
