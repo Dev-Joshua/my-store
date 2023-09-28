@@ -46,3 +46,16 @@ div {
     width: 35px;
   }
 }
+
+@media screen and (min-width: 40em) and (max-width: 50em) {
+  .container-buttons {
+    a {
+      width: 55%;
+      padding: 5px;
+      font-size: 12px;
+    }
+    button:nth-child(2) img {
+      width: 30px;
+    }
+  }
+}

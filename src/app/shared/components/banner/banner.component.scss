@@ -1,12 +1,12 @@
 .banner {
   background-color: #000;
-  border-radius: 15px;
+  border-radius: 20px;
   color: #acd9b2;
   margin: 50px;
-  height: 300px;
+  // height: 300px;
   .swiper-container {
-    height: 300px;
-    border-radius: 15px;
+    // height: 300px;
+    border-radius: 20px;
     z-index: 0;
   }
   &--slider {
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    height: 300px;
+    height: 335px;
     padding-left: 30px;
     &__description {
       width: 70%;
@@ -49,5 +49,32 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 40em) and (max-width: 50em) {
+  .banner {
+    &--slider {
+      height: 200px;
+      &__description {
+        h2 {
+          font-size: 25px;
+        }
+        p {
+          margin: 10px 0;
+          font-size: 14px;
+          width: 95%;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 20em) and (max-width: 39em) {
+  .product-detail {
+    left: 0%;
   }
 }

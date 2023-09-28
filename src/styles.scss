@@ -40,8 +40,29 @@
 .banner--slider {
   app-img {
     img {
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
+      width: 25vw;
+    }
+  }
+}
+
+@media screen and (min-width: 95em) {
+  .banner--slider {
+    app-img {
+      img {
+        width: 45vw;
+        position: relative;
+        top: -120px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 40em) and (max-width: 50em) {
+  .banner--slider {
+    app-img {
+      img {
+        width: 45vw;
+      }
     }
   }
 }
