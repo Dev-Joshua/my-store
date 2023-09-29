@@ -66,7 +66,7 @@
     }
     button {
       margin-top: 20px;
-      width: 400px;
+
       height: 59px;
       flex-shrink: 0;
       color: #fff;
@@ -127,6 +127,10 @@
 
 // mobile
 @media screen and (min-width: 20em) and (max-width: 40em) {
+  .products--grid {
+    margin: 25px;
+  }
+
   .product-detail {
     left: 0%;
   }

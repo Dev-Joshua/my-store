@@ -15,13 +15,16 @@
   </div>
   <!-- si la clase [class.active] esta en true la dispara sino la esconde-->
   <div class="slide-menu" [class.active]="activeMenu">
-    <button (click)="toggleMenu()">Close</button>
     <ul>
+      <li>CATEGORIES</li>
       <li><a routerLink="home">All</a></li>
       <li *ngFor="let item of categories">
         <a [routerLink]="['/category', item.id]">{{ item.name }}</a>
       </li>
     </ul>
+    <button (click)="toggleMenu()">
+      <img src="../../../../assets/svg/x.svg" alt="" />
+    </button>
   </div>
 </div>
 
