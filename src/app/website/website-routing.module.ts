@@ -28,6 +28,9 @@ const routes: Routes = [
       },
       {
         path: 'category/:id',
+        data: {
+          preload: true,
+        },
         component: CategoryComponent,
       },
       {
