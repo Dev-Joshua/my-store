@@ -1,8 +1,9 @@
 .banner {
+  display: block;
   background-color: #000;
   border-radius: 20px;
   color: #acd9b2;
-  margin: 50px;
+  margin: 90px 50px 20px;
   // height: 300px;
   .swiper-container {
     // height: 300px;
@@ -52,7 +53,7 @@
   }
 }
 
-@media screen and (min-width: 40em) and (max-width: 50em) {
+@media screen and (min-width: 40em) and (max-width: 64em) {
   .banner {
     &--slider {
       height: 200px;

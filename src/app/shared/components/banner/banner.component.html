@@ -1,4 +1,4 @@
-<div class="banner" *ngIf="products.length > 0; else loaderContainer">
+<div class="banner" *ngIf="products.length > 0">
   <swiper
     class="swiper-container"
     [slidesPerView]="1"
@@ -18,8 +18,8 @@
     </ng-template>
   </swiper>
 </div>
-<ng-template #loaderContainer>
+<!-- <ng-template #loaderContainer>
   <div>
     <app-loader></app-loader>
   </div>
-</ng-template>
+</ng-template> -->
