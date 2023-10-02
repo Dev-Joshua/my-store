@@ -1,17 +1,12 @@
-<div class="form-profile">
+<div *ngIf="user" class="form-profile">
   <h2>My account</h2>
   <form>
     <label for="">Name</label>
-    <input name="name" type="text" placeholder="Camila Yoko" disabled />
+    {{ user.name }}
     <label for="">Email address</label>
-    <input
-      name="email"
-      type="email"
-      placeholder="camilayokoo@gmail.com"
-      disabled
-    />
-    <label for="">Password</label>
-    <input name="password" placeholder="*********" type="password" disabled />
+    {{ user.email }}
+    <label for="">Role</label>
+    {{ user.role }}
     <button class="log-in">Edit</button>
   </form>
 </div>

@@ -55,13 +55,20 @@
           Sign in
         </button>
         <hr />
-        <button>
-          <a routerLinkActive="active" routerLink="register">Sign up</a>
-        </button>
-        <ng-template #elseBlock>{{ profile?.email }}</ng-template>
+        <div *ngIf="!profile">
+          <button id="register">
+            <a routerLinkActive="active" routerLink="register">Sign up</a>
+          </button>
+        </div>
+        <ng-template #elseBlock>
+          <a routerLink="/profile">{{ profile?.email }}</a>
+        </ng-template>
+        <div *ngIf="profile">
+          <button id="logout" (click)="logout()">Logout</button>
+        </div>
       </div>
       <div class="cart">
-        <a href="">
+        <a>
           <span><i class="fa-solid fa-cart-shopping"></i></span>
         </a>
         <span class="counter">{{ counter }}</span>

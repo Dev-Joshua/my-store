@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { UsersService } from './services/users/users.service';
+import { AuthService } from './services/auth/auth.service';
+import { TokenService } from './services/token/token.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,17 @@ import { UsersService } from './services/users/users.service';
 export class AppComponent {
   imgParent = '';
 
-  constructor(private usersServices: UsersService) {}
+  constructor(
+    private usersServices: UsersService,
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {}
 
-  onLoaded(img: string) {
-    console.log('log padre', img);
+  ngOnInit() {
+    const token = this.tokenService.getToken();
+    if (token) {
+      this.authService.getProfile().subscribe();
+    }
   }
 
   createUser() {

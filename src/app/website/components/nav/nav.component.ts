@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { StoreService } from 'src/app/services/store.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/models/user.model';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Category } from 'src/app/models/category.model';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -23,7 +23,8 @@ export class NavComponent {
   constructor(
     private storeServices: StoreService,
     private authService: AuthService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ) {}
 
   // Me subscribo a myCart$ para tener la lista de productos (myShoppingCart) actualizada en el counter.
@@ -32,6 +33,9 @@ export class NavComponent {
       this.counter = products.length;
     });
     this.getAllCategories();
+    this.authService.user$.subscribe((data) => {
+      this.profile = data;
+    });
   }
 
   // En el estado que este lo hacemos cambiar a lo contrario
@@ -51,6 +55,12 @@ export class NavComponent {
     this.categoriesService.getAll(4, 0).subscribe((data) => {
       this.categories = data;
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.profile = null;
+    this.router.navigate(['home']);
   }
 }
 
