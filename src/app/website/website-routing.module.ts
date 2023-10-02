@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
-import { CategoryComponent } from './pages/category/category.component';
+
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -27,11 +27,14 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'category/:id',
+        path: 'category',
+        loadChildren: () =>
+          import('./pages/category/category.module').then(
+            (m) => m.CategoryModule
+          ),
         data: {
           preload: true,
         },
-        component: CategoryComponent,
       },
       {
         path: 'products/:id',
@@ -70,3 +73,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class WebsiteRoutingModule {}
+
+/*
+  Divido a category en un modulo aparte en otro chunk para cargarlo solo cuando se muestre
+*/

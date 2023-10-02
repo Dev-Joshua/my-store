@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CustomPreloadService } from './services/custom/custom-preload.service';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: CustomPreloadService,
+      preloadingStrategy: QuicklinkStrategy,
     }),
   ],
   exports: [RouterModule],
@@ -34,8 +35,6 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 /*
-  Le indico al routing que muestre una catagoria y que me especifique cual es el id de esa categoria
-  -->ruta de categorias: category/:id
-
-  Aplico precarga de modulos con PreloadAllModules de Angular
+  Aplico precarga de modulos con QuicklinkStrategy de Angular.
+  Esta es una estrategia que detecta todo lo que tenga routerLinks dentro del viewport y hace un request.
 */
