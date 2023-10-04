@@ -12,7 +12,7 @@
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)"
   ></app-product>
-  <button (click)="loadMore()">Load More</button>
+
   <div class="product-detail" [class.active]="showProductDetail">
     <!-- {{ statusDetail }} -->
     <div *ngIf="productChosen">
@@ -34,7 +34,9 @@
     </div>
   </div>
 </div>
-
+<div class="btnMore">
+  <button (click)="loadMore()">Load More</button>
+</div>
 <!-- Agrego eventos a <app-product>, gracias al @output podemos leer este evento dentro del padre.
      Conecto el detalle de un producto(request por id) con algo en la interfaz,
      cada vez que se abra el slide dandole click a un producto me va traer

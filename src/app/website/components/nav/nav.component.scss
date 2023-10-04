@@ -13,6 +13,7 @@
     button {
       border: 0;
       background: transparent;
+      cursor: pointer;
     }
     .cart {
       position: relative;
@@ -74,6 +75,7 @@
   position: fixed;
   top: 0;
   background-color: #fff;
+  z-index: 9999;
   > div {
     padding: 1em;
     display: flex;

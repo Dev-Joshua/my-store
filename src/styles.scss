@@ -22,6 +22,9 @@
     img {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      width: 100%;
     }
   }
 }
@@ -31,8 +34,20 @@
     align-items: center;
     img {
       width: 100%;
+      aspect-ratio: 1/1;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
+    }
+  }
+}
+
+.page-product {
+  .detail {
+    .swiper-images {
+      img {
+        position: relative;
+        top: -50px;
+      }
     }
   }
 }
@@ -49,7 +64,7 @@
   .banner--slider {
     app-img {
       img {
-        width: 45vw;
+        width: 25vw;
         position: relative;
         // top: -120px;
       }
@@ -62,6 +77,19 @@
     app-img {
       img {
         width: 45vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 20em) and (max-width: 40em) {
+  .page-product {
+    .detail {
+      .swiper-images {
+        img {
+          top: 0;
+          height: 50vh;
+        }
       }
     }
   }

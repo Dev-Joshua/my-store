@@ -1,10 +1,23 @@
 button {
-  font-size: 16px;
-  margin-left: 20px;
-  width: 25%;
+  margin-top: 100px;
+  font-size: 14px;
+  margin-left: 30px;
+  width: 15%;
   padding: 5px;
   border-radius: 5px;
   border: none;
   font-weight: bold;
   font-family: "Quicksand", sans-serif;
+  cursor: pointer;
+  &:hover {
+    background-color: #acd9b2;
+  }
+}
+
+@media screen and (min-width: 20em) and (max-width: 40em) {
+  button {
+    margin-top: 85px;
+    margin-left: 15px;
+    width: 40%;
+  }
 }

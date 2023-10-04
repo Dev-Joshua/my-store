@@ -1,10 +1,17 @@
 .page-product {
   margin: 3em 0;
   padding: 0 3em;
+  button {
+    border: none;
+    background-color: transparent;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
   .detail {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
+    height: 60vh;
     .gallery {
       overflow: hidden;
       width: 100%;
@@ -17,6 +24,23 @@
     }
     h2 {
       font-size: 1.5em;
+    }
+  }
+}
+
+@media screen and (min-width: 20em) and (max-width: 40em) {
+  .page-product {
+    .detail {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-size: 1.5em;
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   }
 }
