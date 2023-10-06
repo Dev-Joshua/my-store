@@ -1,5 +1,9 @@
 <div *ngIf="user" class="form-profile">
+  <div (click)="goToBack()" class="close-icon">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
   <h2>My account</h2>
+
   <form>
     <label for="">Name</label>
     {{ user.name }}

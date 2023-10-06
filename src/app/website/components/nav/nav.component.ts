@@ -19,6 +19,7 @@ export class NavComponent {
   categories: Category[] = [];
   limit = 4;
   offset = 0;
+  modalSwitch = false;
 
   constructor(
     private storeServices: StoreService,
@@ -45,7 +46,7 @@ export class NavComponent {
 
   login() {
     this.authService
-      .loginAndGet('Jdaniel@mail.com', '12345')
+      .loginAndGet('admin_D@gmail.com', 'admin123')
       .subscribe((user) => {
         this.profile = user;
       });
@@ -61,6 +62,10 @@ export class NavComponent {
     this.authService.logout();
     this.profile = null;
     this.router.navigate(['home']);
+  }
+
+  openModal(value: boolean) {
+    this.modalSwitch = value;
   }
 }
 

@@ -16,7 +16,9 @@
   <div class="product-detail" [class.active]="showProductDetail">
     <!-- {{ statusDetail }} -->
     <div *ngIf="productChosen">
-      <button (click)="toggleProductDetail()">X</button>
+      <button (click)="toggleProductDetail()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <swiper class="swiper-container" [slidesPerView]="1">
         <ng-template swiperSlide *ngFor="let img of productChosen.images">
           <img [src]="img" [alt]="productChosen.title" />

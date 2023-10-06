@@ -29,7 +29,7 @@
       </li>
     </ul>
     <button (click)="toggleMenu()">
-      <img src="../../../../assets/svg/x.svg" alt="" />
+      <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
 </div>
@@ -76,6 +76,11 @@
     </div>
   </div>
 </div>
+
+<!-- <app-login-modal
+  *ngIf="modalSwitch"
+  (modalSwitch)="openModal($event)"
+></app-login-modal> -->
 
 <!--
   Con el counter mostramos cuantos elementos hay en el shopping cart de forma reactiva.

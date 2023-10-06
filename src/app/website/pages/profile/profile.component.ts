@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/models/user.model';
@@ -10,12 +11,16 @@ import { User } from 'src/app/models/user.model';
 export class ProfileComponent {
   user: User | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private location: Location) {}
 
   ngOnInit(): void {
     this.authService.user$.subscribe((data) => {
       this.user = data;
     });
+  }
+
+  goToBack() {
+    this.location.back();
   }
 }
 

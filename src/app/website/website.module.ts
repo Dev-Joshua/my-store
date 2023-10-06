@@ -18,6 +18,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+
 @NgModule({
   declarations: [
     NavComponent,

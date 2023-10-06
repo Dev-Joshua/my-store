@@ -29,8 +29,8 @@ export class AppComponent {
     this.usersServices
       .create({
         name: 'Andres',
-        email: 'Jdaniel@mail.com',
-        password: '12345',
+        email: 'admin_D@gmail.com',
+        password: 'admin123',
         avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
         role: 'admin',
       })
@@ -39,3 +39,5 @@ export class AppComponent {
       });
   }
 }
+
+/*Si existe un token en localStorage solo por unica vez se hara un getProfile() */
