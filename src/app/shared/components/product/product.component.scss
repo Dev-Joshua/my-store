@@ -45,10 +45,6 @@ div {
     background: none;
     margin-right: 10px;
     cursor: pointer;
-    &:hover {
-      border-radius: 35px;
-      box-shadow: 5px 2px 2px #4a704f;
-    }
   }
   button:nth-child(2) img {
     width: 35px;
