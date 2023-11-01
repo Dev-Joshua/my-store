@@ -36,14 +36,31 @@ My-store una solución de comercio electrónico que permitirá a los usuarios bu
 
 Capturas de pantalla:
 
+Home desktop
 ![Home Desktop](src/assets/images/Home.png)
+
+Home tablet
 ![Home Tablet](src/assets/images/Home768px.png)
+
+Home mobile
 ![Home Mobile](src/assets/images/Home425px.png)
+
+Menu mobile
 ![Menu Mobile](src/assets/images/menu-mobile.png)
+
+Product detail mobile
 ![Product Mobile](src/assets/images/product-detail-mobile.png)
+
+Product detail desktop
 ![Product Desktop](src/assets/images/product-detail-desktop.png)
+
+Login
 ![Login](src/assets/images/login.png)
+
+Register form
 ![Register Form](src/assets/images/register.png)
+
+Show product detail
 ![Show Product](src/assets/images/show-product.png)
 
 ## Instalación
