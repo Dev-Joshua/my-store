@@ -1,6 +1,6 @@
 # My-Store
 
-- La aplicación esta desplegada en Netlify: [Link](https://subtle-frangollo-509af5.netlify.app/home)
+- La aplicación esta desplegada en Netlify: [Link](https://ecysale.netlify.app/home)
 
 My-store es una plataforma de comercio desarrollada en Angular que permite a los usuarios explorar e interactuar con una amplia gama de productos en línea. Esta aplicación está diseñada para brindar una experiencia de navegación conveniente y segura. Este proyecto se generó con Angular CLI versión 16.0.1.
 
@@ -45,10 +45,10 @@ Home tablet
 Home mobile
 ![Home Mobile](src/assets/images/Home425px.png)
 
-Menu mobile
+Menu mobile<br>
 ![Menu Mobile](src/assets/images/menu-mobile.png)
 
-Product detail mobile
+Product detail mobile<br>
 ![Product Mobile](src/assets/images/product-detail-mobile.png)
 
 Product detail desktop
