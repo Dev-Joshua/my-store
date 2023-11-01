@@ -92,6 +92,8 @@ Para comenzar a usar my-store, siga estos pasos:
 
 4. Agregue productos al carrito de compras del nav.
 
+5. Si desea ver la interfaz de registro, login o profile-edit. Puede acceder mediante los respectivos endpoints: /login, /register, /profile-edit, /recovery.
+
 ## Tecnologías Utilizadas
 
 Las principales tecnologías y herramientas utilizadas en este proyecto son:
